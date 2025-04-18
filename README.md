@@ -69,17 +69,17 @@ ZYRA/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/zyra-brand.git
-   cd zyra-brand
+   git clone https: https://github.com/JatinDhawad/Zyra
+   cd Zyra
 2. Install backend dependencies:
    npm install
 3. Start the server:
    node app.js
 4. Open index.html in your browser to explore the frontend.
 
-##🤝 Contributing
+## 🤝 Contributing
 Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
 
-##📜 License
+## 📜 License
 This project is for educational purposes. Feel free to fork and enhance it!
 
