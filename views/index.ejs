@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYRA</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <script src="/index.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="brand-name">ZYRA</div>
+        <nav class="head">
+            <ul>
+                <li><img src="/Search.png" alt="Search Icon"></li>
+        
+                <li>
+                    <% if (user) { %>
+                        <span style="color: white;">Welcome, <%= user.username%> 👋</span>
+                        <a href="/logout">Logout</a>
+                    <% } else { %>
+                        <a href="/signup">Signup</a>
+                    <% } %>
+                </li>
+        
+                <li><img src="/empty_heart.png" alt="Favourite Icon"><a href="#">Favourite</a></li>
+                <li><img src="/cart.png" alt="Cart Icon"><a href="#">Cart</a></li>
+            </ul>
+        </nav>        
+    </header>
+
+    <nav class="category">
+        <ul>
+            <li>WOMEN</li>
+            <li>KIDS</li>
+            <li>MEN</li>
+        </ul>
+    </nav>
+
+    <img class="hero" src="/hero.png" alt="Hero Image" width="100%" height="auto">
+
+    <main>
+        <section class="shop-category">
+            <h2>SHOP BY CATEGORY</h2>
+            <div class="category-container">
+                <div class="category-box">
+                    <a href="/men.html">
+                        <img src="/men.png" alt="Men's Clothing">
+                        <h3>MEN</h3>
+                    </a>
+                </div>
+                <div class="category-box">
+                    <a href="/women.html">
+                        <img src="/women.png" alt="Women's Clothing">
+                        <h3>WOMEN</h3>
+                    </a>
+                </div>
+                <div class="category-box">
+                    <a href="/kids.html">
+                        <img src="/kids.png" alt="Kids' Clothing">
+                        <h3>KIDS</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="trending-head">TRENDING NOW</h2>
+        <section class="trending-section">
+            <div class="trending-grid">
+                <div class="product-card">
+                    <video src="/oversized tshirt.mp4" autoplay loop muted playsinline></video>
+                    <h3>Oversized T-Shirt</h3>
+                    <p>Rs. 789</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <video src="/Hoodies.mp4" autoplay loop muted playsinline></video>
+                    <h3>Hoodie</h3>
+                    <p>Rs. 1799</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <video src="/dress.mp4" autoplay loop muted playsinline></video>
+                    <h3>Dress</h3>
+                    <p>Rs. 1299</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <video src="/Set.mp4" autoplay loop muted playsinline></video>
+                    <h3>Formal Suit</h3>
+                    <p>Rs. 4599</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ZYRA. All rights reserved.</p>
+    </footer>
+
+    <div id="cart-popup" class="cart-popup">Item added to cart!</div>
+
+</body>
+
+</html>

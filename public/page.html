@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYRA - Product Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="page.js" defer></script>
+    <style>
+        /* General Reset */
+        /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: white;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+        font-size: 24px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1;
+}
+
+header .brand-name a {
+    font-weight: 700;
+    text-align: center;
+}
+
+header nav.head ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+header nav.head ul li {
+    display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: color 0.3s ease-in-out;
+}
+
+header nav.head ul li a {
+    text-decoration: none;
+        color: black;
+        font-size: 19px;
+        transition: color 0.3s ease-in-out;
+}
+
+header nav.head ul li img{
+    width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+header nav.head ul li a:hover {
+    color: #0077b6;
+}
+
+header nav.head ul li img{
+    transform: scale(1.2);
+    filter: brightness(0.6);
+}
+
+header nav.head ul li i {
+    font-size: 18px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+header nav.head ul li i:hover {
+    color: #0077b6;
+}
+
+/* Main Navigation */
+nav.main-nav {
+    background-color: #f4f4f4;
+    padding: 10px 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+nav.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav.main-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav.main-nav ul li a:hover {
+    color: #d35400;
+}
+
+/* Category Banner */
+.category-banner {
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.category-banner img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.category-banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.category-banner-text h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.category-banner-text p {
+    font-size: 18px;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    margin: 20px 30px;
+    font-size: 14px;
+    color: #555;
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+    color: #0077b6;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+    color: #d35400;
+}
+
+/* Products Section */
+.products-section {
+    padding: 20px 30px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-image img:hover {
+    transform: scale(1.1);
+}
+
+.product-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #d35400;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.product-badge.sale {
+    background-color: #e74c3c;
+}
+
+.product-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-info .price {
+    font-size: 16px;
+    color: #0077b6;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .product-info h3 {
+        font-size: 14px;
+    }
+
+    .product-info .price {
+        font-size: 12px;
+    }
+
+    .category-banner img {
+        height: 200px;
+    }
+
+    .category-banner-text h1 {
+        font-size: 28px;
+    }
+
+    .category-banner-text p {
+        font-size: 14px;
+    }
+}
+
+/* Limit the container width and center it */
+.container {
+    max-width: 1200px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 15px; /* Add some padding for smaller screens */
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand-name"><a href="index.html">ZYRA</a></div>
+        <nav class="head">
+            <ul>
+                <li><i class="fas fa-search"></i></li>
+                <li><a href="signin.html">Sign in</a></li>
+                <li><i class="far fa-heart"></i><a href="#">Favourite</a></li>
+                <li><i class="fas fa-shopping-cart"></i><a href="#">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="women.html">WOMEN</a></li>
+            <li><a href="men.html">MEN</a></li>
+            <li><a href="kids.html">KIDS</a></li>
+        </ul>
+    </nav>
+
+    <div class="category-banner">
+        <img src="tshirt.png" alt="Product Collection">
+        <div class="category-banner-text">
+            <h1 id="category-title">Category Name</h1>
+            <p id="category-description">Explore our premium collection of products.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a> > <span id="breadcrumb-category">Category</span>
+        </div>
+
+        <section class="products-section">
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ZYRA. All rights reserved.</p>
+    </footer>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category') || 'all'; // Default to 'all' if no category is provided
+
+        // Fetch product data
+        fetch('page.json')
+            .then(response => response.json())
+            .then(products => {
+                // Filter products by category
+                const filteredProducts = category === 'all'
+                    ? products
+                    : products.filter(product => product.category.toLowerCase() === category.toLowerCase());
+
+                // Update the page title and breadcrumbs
+                document.getElementById('category-title').textContent = category.toUpperCase();
+                document.getElementById('breadcrumb-category').textContent = category;
+
+                // Populate the product grid
+                const productsGrid = document.getElementById('products-grid');
+                productsGrid.innerHTML = filteredProducts.map(product => `
+                    <a href="product.html?id=${product.id}" class="product-card">
+                        <div class="product-image">
+                            ${product.isNew ? '<span class="product-badge new">NEW</span>' : ''}
+                            ${product.isOnSale ? '<span class="product-badge sale">SALE</span>' : ''}
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <div class="price">Rs. ${product.price}</div>
+                        </div>
+                    </a>
+                `).join('');
+
+                // Show a message if no products are found
+                if (filteredProducts.length === 0) {
+                    productsGrid.innerHTML = '<p>No products found in this category.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error loading products:', error);
+                document.getElementById('products-grid').innerHTML = '<p>Error loading products. Please try again later.</p>';
+            });
+    });
+</script>
+
+</html>

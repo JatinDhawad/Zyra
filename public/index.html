@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <script src="index.js" defer></script>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Lora", serif;
+        font-weight: 400;
+    }
+
+    body {
+        background-color: rgb(226, 241, 248);
+    }
+
+    header {
+        background-color: white;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+        font-size: 24px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .brand-name a {
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .head ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .head ul li {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .head ul li a {
+        text-decoration: none;
+        color: black;
+        font-size: 19px;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .head ul li img {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    }
+
+    .head ul li:hover a {
+        color: #0077b6;
+    }
+
+    .head ul li:hover img {
+        transform: scale(1.2);
+        filter: brightness(0.6);
+    }
+
+    .category {
+        background-color: antiquewhite;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+    }
+
+    .category ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+
+    }
+
+    .category ul li a {
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .category ul li a:hover {
+        color: #d35400;
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    .hero {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+
+    .shop-category {
+        text-align: center;
+        background-color: white;
+        padding: 20px 0px;
+    }
+
+    .shop-category h2 {
+        background-color: antiquewhite;
+        height: 45px;
+        font-weight: 500;
+        font-size: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 15px;
+    }
+
+    .category-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding-top: 20px;
+    }
+
+    .category-box {
+        width: 22%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .category-box img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .category-box:hover img {
+        transform: scale(1.05);
+    }
+
+    .category-box h3 {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 10px;
+    }
+
+    .trending-head {
+        background-color: antiquewhite;
+        height: 45px;
+        font-weight: 500;
+        font-size: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 15px;
+    }
+
+    .trending-section {
+        text-align: center;
+        padding: 20px 20px;
+    }
+
+    .trending-section h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .trending-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 50px;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+
+    .product-card video {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .product-card h3 {
+        font-size: 18px;
+        margin: 5px 0;
+    }
+
+    .product-card p {
+        font-size: 16px;
+        color: #0077b6;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    .product-card button {
+        margin-top: 10px;
+        padding: 8px 20px;
+        border: none;
+        background-color: #0077b6;
+        color: white;
+        font-size: 14px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .product-card button:hover {
+        background-color: #005f86;
+    }
+
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 14px;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: black;
+    }
+
+
+    .cart-popup {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #222;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        z-index: 1000;
+        font-family: 'Lora', serif;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: fadeInOut 2s ease-in-out;
+    }
+
+    @keyframes fadeInOut {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        20% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        80% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+    }
+
+    /* Styling for Buy Now button */
+.buy-now-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:rgb(113, 201, 239);
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-now-btn:hover {
+    background-color: #555;
+}
+</style>
+
+<body>
+    <header>
+        <div class="brand-name"> <a href="index.html">ZYRA</a> </div>
+        <nav class="head">
+            <ul>
+                <li><img src="Search.png" alt="Search Icon"></li>
+                <li><a href="signin.html">Sign in</a></li>
+                <li><img src="empty_heart.png" alt="Favourite Icon"><a href="#">Favourite</a></li>
+                <li> <img src="cart.png" alt="Cart Icon"><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="category">
+        <ul>
+            <li> <a href="men.html">MEN</a> </li>
+            <li> <a href="women.html"> WOMEN</a> </li>
+            <li> <a href="kids.html"> KIDS </a> </li>
+        </ul>
+    </nav>
+
+    <img class="hero" src="hero.png" alt="Hero Image" width="100%" height="auto">
+
+    <main>
+        <section class="shop-category">
+            <h2>SHOP BY CATEGORY</h2>
+            <div class="category-container">
+                <div class="category-box">
+                    <a href="men.html">
+                        <img src="men.png" alt="Men's Clothing">
+                        <h3>MEN</h3>
+                    </a>
+                </div>
+                <div class="category-box">
+                    <a href="women.html">
+                        <img src="women.png" alt="Women's Clothing">
+                        <h3>WOMEN</h3>
+                    </a>
+                </div>
+                <div class="category-box">
+                    <a href="kids.html">
+                        <img src="kids.png" alt="Kids' Clothing">
+                        <h3>KIDS</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="trending-head">TRENDING NOW</h2>
+        <section class="trending-section">
+            <div class="trending-grid">
+                <div class="product-card">
+                    <a href="product.html?id=1"><video src="oversized tshirt.mp4" autoplay loop muted
+                            playsinline></video></a>
+                    <h3>Oversized T-Shirt</h3>
+                    <p>Rs. 789</p>
+                    <a href="oversizedtshirt.html" class="buy-now-btn">Buy Now</a>
+                </div>
+                <div class="product-card">
+                    <a href="product.html?id=6"><video src="Hoodies.mp4" autoplay loop muted playsinline></video></a>
+                    <h3>Hoodie</h3>
+                    <p>Rs. 1799</p>
+                    <a href="product.html?id=6" class="buy-now-btn">Buy Now</a>
+                </div>
+                <div class="product-card">
+                    <a href="product.html?id=7"><video src="dress.mp4" autoplay loop muted playsinline></video></a>
+                    <h3>Dress</h3>
+                    <p>Rs. 1299</p>
+                    <a href="product.html?id=7" class="buy-now-btn">Buy Now</a>
+                </div>
+                <div class="product-card">
+                    <a href="product.html?id=8"><video src="Set.mp4" autoplay loop muted playsinline></video></a>
+                    <h3>Formal Suit</h3>
+                    <p>Rs. 4599</p>
+                    <a href="product.html?id=8" class="buy-now-btn">Buy Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ZYRA. All rights reserved.</p>
+    </footer>
+
+    <div id="cart-popup" class="cart-popup">Item added to cart!</div>
+
+</body>
+
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oversized T-Shirt - ZYRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <script src="cart.js" defer></script>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lora', serif;
+        }
+
+        body {
+            background-color: rgb(226, 241, 248);
+        }
+
+        header {
+            background-color: white;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            font-size: 24px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            text-align: center;
+        }
+
+        nav.head ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav.head ul li {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav.head ul li a {
+            text-decoration: none;  
+            color: black;
+            font-size: 19px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav.head ul li img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        }
+
+        nav.head ul li:hover a {
+            color: #0077b6;
+        }
+
+        nav.head ul li:hover img {
+            transform: scale(1.2);
+            filter: brightness(0.6);
+        }
+
+        nav.category {
+            background-color: antiquewhite;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        nav.category ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav.category ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+
+        nav.category ul li a:hover {
+            color: #d35400;
+            transform: scale(1.1);
+        }
+
+
+        .product-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .product-gallery {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .product-video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .product-info {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .product-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .size-options {
+            margin-bottom: 30px;
+        }
+
+        .size-options h3 {
+            margin-bottom: 15px;
+        }
+
+        .size-grid {
+            display: flex;
+            gap: 10px;
+        }
+
+        .size-box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .size-box:hover,
+        .size-box.selected {
+            background-color: #333;
+            color: white;
+        }
+
+        .quantity {
+            margin-bottom: 30px;
+        }
+
+        .quantity h3 {
+            margin-bottom: 15px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #f1f1f1;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            margin: 0 10px;
+        }
+
+        .add-cart-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-cart-btn:hover {
+            background-color: #555;
+        }
+
+        .reviews-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .reviews-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .review {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .review:last-child {
+            border-bottom: none;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+        }
+
+        .review-date {
+            color: #888;
+        }
+
+        .review-rating {
+            color: #f5a623;
+            margin-bottom: 10px;
+        }
+
+        .review-content {
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .cart-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            display: none;
+            animation: fadeIn 0.3s, fadeOut 0.3s 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand-name"><a href="index.html">ZYRA</a> </div>
+        <nav class="head">
+            <ul>
+                <li><img src="Search.png" alt="Search Icon"></li>
+                <li><a href="signin.html">Sign in</a></li>
+                <li><img src="empty_heart.png" alt="Favourite Icon"><a href="#">Favourite</a></li>
+                <li><img src="cart.png" alt="Cart Icon"><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="category">
+        <ul>
+            <li> <a href="men.html">MEN</a> </li>
+            <li> <a href="women.html"> WOMEN</a> </li>
+            <li> <a href="kids.html"> KIDS </a> </li>
+        </ul>
+    </nav>
+
+    <div class="product-container">
+        <div class="product-gallery">
+            <video class="product-video" src="oversized tshirt.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <div class="product-info">
+            <h1 class="product-title">Oversized T-Shirt</h1>
+            <p class="product-price">Rs. 789</p>
+            <div class="product-description">
+                <p>Elevate your casual wardrobe with our premium Oversized T-Shirt. Crafted from 100% organic cotton,
+                    this t-shirt offers both comfort and style. The relaxed fit provides a trendy silhouette while
+                    maintaining maximum comfort for all-day wear.</p>
+                <p>Features:</p>
+                <ul>
+                    <li>Premium organic cotton fabric</li>
+                    <li>Relaxed, oversized fit</li>
+                    <li>Reinforced stitching for durability</li>
+                    <li>Pre-shrunk to minimize size changes after washing</li>
+                    <li>Available in multiple colors</li>
+                </ul>
+            </div>
+            <div class="size-options">
+                <h3>Select Size</h3>
+                <div class="size-grid">
+                    <div class="size-box">S</div>
+                    <div class="size-box">M</div>
+                    <div class="size-box">L</div>
+                    <div class="size-box">XL</div>
+                    <div class="size-box">XXL</div>
+                </div>
+            </div>
+            <div class="quantity">
+                <h3>Quantity</h3>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <input type="text" class="quantity-input" value="1">
+                    <button class="quantity-btn">+</button>
+                </div>
+            </div>
+            <button class="add-cart-btn">ADD TO CART</button>
+        </div>
+    </div>
+
+    <section class="reviews-section">
+        <h2 class="reviews-title">Customer Reviews</h2>
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Rahul M.</span>
+                <span class="review-date">April 2, 2025</span>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-content">Absolutely love this oversized tee! The quality is exceptional, and it fits
+                exactly as expected. The fabric is soft and breathable. I've already ordered two more in different
+                colors.</p>
+        </div>
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Priya S.</span>
+                <span class="review-date">March 27, 2025</span>
+            </div>
+            <div class="review-rating">★★★★☆</div>
+            <p class="review-content">Great t-shirt overall. The material feels premium and it washes well without
+                losing shape. Took off one star because the sizing runs slightly larger than expected.</p>
+        </div>
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Arjun D.</span>
+                <span class="review-date">March 15, 2025</span>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-content">Perfect casual wear! The oversized fit is very trendy and comfortable. I'm usually
+                between M and L sizes, went with M and it has the perfect oversized look without being too baggy.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ZYRA. All rights reserved.</p>
+    </footer>
+
+    <div id="cart-popup" class="cart-popup">Item added to cart!</div>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+
+<body>
+    <header>
+        <div class="brand-name">ZYRA</div>
+        <nav class="head">
+            <ul>
+                <li><img src="Search.png" alt="Search Icon"></li>
+                <li><a href="signin.html">Sign in</a></li>
+                <li><img src="empty_heart.png" alt="Favourite Icon"><a href="#">Favourite</a></li>
+                <li><img src="cart.png" alt="Cart Icon"><a href="#">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="category">
+        <ul>
+            <li> <a href="men.html">MEN</a> </li>
+            <li> <a href="women.html"> WOMEN</a> </li>
+            <li> <a href="kids.html"> KIDS </a> </li>
+        </ul>
+    </nav>
+
+    <div class="product-container">
+        <div class="product-gallery">
+            <video class="product-video" src="/api/placeholder/400/500" autoplay loop muted playsinline></video>
+        </div>
+        <div class="product-info">
+            <h1 class="product-title">Oversized T-Shirt</h1>
+            <p class="product-price">Rs. 789</p>
+            <div class="product-description">
+                <p>Elevate your casual wardrobe with our premium Oversized T-Shirt. Crafted from 100% organic cotton,
+                    this t-shirt offers both comfort and style. The relaxed fit provides a trendy silhouette while
+                    maintaining maximum comfort for all-day wear.</p>
+                <p>Features:</p>
+                <ul>
+                    <li>Premium organic cotton fabric</li>
+                    <li>Relaxed, oversized fit</li>
+                    <li>Reinforced stitching for durability</li>
+                    <li>Pre-shrunk to minimize size changes after washing</li>
+                    <li>Available in multiple colors</li>
+                </ul>
+            </div>
+            <div class="size-options">
+                <h3>Select Size</h3>
+                <div class="size-grid">
+                    <div class="size-box">S</div>
+                    <div class="size-box">M</div>
+                    <div class="size-box">L</div>
+                    <div class="size-box">XL</div>
+                    <div class="size-box">XXL</div>
+                </div>
+            </div>
+            <div class="quantity">
+                <h3>Quantity</h3>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <input type="text" class="quantity-input" value="1">
+                    <button class="quantity-btn">+</button>
+                </div>
+            </div>
+            <button class="add-cart-btn">ADD TO CART</button>
+        </div>
+    </div>
+
+    <section class="reviews-section">
+        <h2 class="reviews-title">Customer Reviews</h2>
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Rahul M.</span>
+                <span class="review-date">April 2, 2025</span>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-content">Absolutely love this oversized tee! The quality is exceptional, and it fits
+                exactly as expected. The fabric is soft and breathable. I've already ordered two more in different
+                colors.</p>
+        </div>
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Priya S.</span>
+                <span class="review-date">March 27, 2025</span>
+            </div>
+            <div class="review-rating">★★★★☆</div>
+            <p class="review-content">Great t-shirt overall. The material feels premium and it washes well without
+                losing shape. Took off one star because the sizing runs slightly larger than expected.</p>
+        </div>
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Arjun D.</span>
+                <span class="review-date">March 15, 2025</span>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-content">Perfect casual wear! The oversized fit is very trendy and comfortable. I'm usually
+                between M and L sizes, went with M and it has the perfect oversized look without being too baggy.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ZYRA. All rights reserved.</p>
+    </footer>
+
+    <div id="cart-popup" class="cart-popup">Item added to cart!</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Size selection
+            const sizeBoxes = document.querySelectorAll('.size-box');
+            sizeBoxes.forEach(box => {
+                box.addEventListener('click', function () {
+                    sizeBoxes.forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            // Quantity control
+            const quantityInput = document.querySelector('.quantity-input');
+            const quantityBtns = document.querySelectorAll('.quantity-btn');
+
+            quantityBtns[0].addEventListener('click', function () {
+                let value = parseInt(quantityInput.value);
+                if (value > 1) {
+                    quantityInput.value = value - 1;
+                }
+            });
+
+            quantityBtns[1].addEventListener('click', function () {
+                let value = parseInt(quantityInput.value);
+                quantityInput.value = value + 1;
+            });
+
+            // Add to cart functionality
+            const addCartBtn = document.querySelector('.add-cart-btn');
+            const cartPopup = document.getElementById('cart-popup');
+
+            addCartBtn.addEventListener('click', function () {
+                cartPopup.style.display = 'block';
+
+                setTimeout(function () {
+                    cartPopup.style.display = 'none';
+                }, 2300);
+            });
+        });
+    </script>
+</body>
+
+</html>

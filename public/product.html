@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Name - ZYRA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="product.css" />
+  <script src="product.js" defer></script>
+  <script src="cart.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="brand-name"><a href="index.html">ZYRA</a></div>
+    <nav class="head">
+      <ul>
+        <li><img src="Search.png" alt="Search Icon" /></li>
+        <li><a href="signin.html">Sign in</a></li>
+        <li><img src="empty_heart.png" alt="Favourite Icon" /><a href="#">Favourite</a></li>
+        <li><img src="cart.png" alt="Cart Icon" /><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <nav class="category">
+    <ul>
+      <li><a href="men.html">MEN</a></li>
+      <li><a href="women.html">WOMEN</a></li>
+      <li><a href="kids.html">KIDS</a></li>
+    </ul>
+  </nav>
+
+  <div class="product-container">
+    <div class="product-gallery">
+      <video class="product-video" src="" autoplay loop muted playsinline></video>
+    </div>
+    <div class="product-info">
+      <h1 class="product-title">Product Name</h1>
+      <p class="product-price">Rs. 0</p>
+      <div class="product-description">
+        <p>Insert main product description here.</p>
+        <p>Features:</p>
+        <ul class="features-list">
+          <!-- Features will be dynamically loaded -->
+        </ul>
+      </div>
+
+      <div class="size-options">
+        <h3>Select Size</h3>
+        <div class="size-grid">
+          <!-- Dynamically insert .size-box buttons here -->
+        </div>
+      </div>
+
+      <div class="quantity">
+        <h3>Quantity</h3>
+        <div class="quantity-control">
+          <button id="quantity-minus" class="quantity-btn">-</button>
+          <input type="text" class="quantity-input" value="1" />
+          <button id="quantity-plus" class="quantity-btn">+</button>
+        </div>
+        
+      </div>
+
+      <button class="add-cart-btn">ADD TO CART</button>
+    </div>
+  </div>
+
+  <section class="reviews-section">
+    <h2 class="reviews-title">Customer Reviews</h2>
+    <div class="reviews-container">
+      <!-- Reviews will be dynamically loaded -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ZYRA. All rights reserved.</p>
+  </footer>
+
+  <div id="cart-popup" class="cart-popup">Item added to cart!</div>
+</body>
+
+</html>

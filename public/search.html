@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .search-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            width: 350px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .search-container.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .suggestions {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .suggestion-item {
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .suggestion-item:hover {
+            background-color: #f0f8ff;
+            color: #007bff;
+        }
+
+        .highlighted {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .no-suggestions {
+            padding: 15px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .main-content {
+            margin-top: 50px;
+            text-align: center;
+            color: #555;
+        }
+
+        .main-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .main-content p {
+            font-size: 1.2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                width: 90%;
+                right: 5%;
+                left: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Fashion Store</div>
+        <button class="search-button" id="searchBtn">
+            <span>Search</span>
+        </button>
+    </div>
+    
+    <div class="search-container" id="searchContainer">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search for clothing items...">
+        <div class="suggestions" id="suggestions"></div>
+    </div>
+    
+    <div class="main-content">
+        <h1>Welcome to our Fashion Store</h1>
+        <p>Click the search button to find your perfect outfit!</p>
+    </div>
+
+    <script>
+        // Clothing items database for suggestions
+        const clothingItems = [
+            "T-shirts",
+            "Jeans",
+            "Hoodies",
+            "Jackets",
+            "Sweaters",
+            "Dresses",
+            "Skirts",
+            "Shorts",
+            "Tank tops",
+            "Polo shirts",
+            "Button-up shirts",
+            "Sweatpants",
+            "Leggings",
+            "Blazers",
+            "Coats",
+            "Socks",
+            "Underwear",
+            "Swimwear",
+            "Athletic wear",
+            "Formal wear",
+            "Casual wear",
+            "Winter collection",
+            "Summer collection",
+            "Spring collection",
+            "Fall collection"
+        ];
+
+        // DOM elements
+        const searchBtn = document.getElementById('searchBtn');
+        const searchContainer = document.getElementById('searchContainer');
+        const searchInput = document.getElementById('searchInput');
+        const suggestionsContainer = document.getElementById('suggestions');
+        
+        // Toggle search container visibility
+        searchBtn.addEventListener('click', () => {
+            searchContainer.classList.toggle('active');
+            if (searchContainer.classList.contains('active')) {
+                searchInput.focus();
+            }
+        });
+        
+        // Close search container when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!searchContainer.contains(event.target) && 
+                !searchBtn.contains(event.target) && 
+                searchContainer.classList.contains('active')) {
+                searchContainer.classList.remove('active');
+            }
+        });
+        
+        // Input event for search suggestions
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            // Clear previous suggestions
+            suggestionsContainer.innerHTML = '';
+            
+            if (query === '') {
+                // Show some popular categories if search is empty
+                displayPopularCategories();
+                return;
+            }
+            
+            // Filter matching items
+            const matchingItems = clothingItems.filter(item => 
+                item.toLowerCase().includes(query)
+            );
+            
+            if (matchingItems.length > 0) {
+                // Display matching items
+                matchingItems.forEach(item => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'suggestion-item';
+                    
+                    // Highlight the matching part
+                    const itemLower = item.toLowerCase();
+                    const index = itemLower.indexOf(query);
+                    const beforeMatch = item.substring(0, index);
+                    const match = item.substring(index, index + query.length);
+                    const afterMatch = item.substring(index + query.length);
+                    
+                    suggestionItem.innerHTML = `${beforeMatch}<span class="highlighted">${match}</span>${afterMatch}`;
+                    
+                    // Click event for suggestion
+                    suggestionItem.addEventListener('click', () => {
+                        searchInput.value = item;
+                        suggestionsContainer.innerHTML = '';
+                        // Here you would typically redirect to search results page
+                        alert(`You selected: ${item}`);
+                    });
+                    
+                    suggestionsContainer.appendChild(suggestionItem);
+                });
+            } else {
+                // No matching items found
+                const noResults = document.createElement('div');
+                noResults.className = 'no-suggestions';
+                noResults.textContent = 'No matching items found';
+                suggestionsContainer.appendChild(noResults);
+            }
+        });
+        
+        // Display popular categories when search is focused but empty
+        function displayPopularCategories() {
+            const popularCategories = ["T-shirts", "Jeans", "Dresses", "Jackets", "Athletic wear"];
+            
+            const heading = document.createElement('div');
+            heading.className = 'suggestion-item';
+            heading.innerHTML = '<strong>Popular Categories:</strong>';
+            suggestionsContainer.appendChild(heading);
+            
+            popularCategories.forEach(category => {
+                const categoryItem = document.createElement('div');
+                categoryItem.className = 'suggestion-item';
+                categoryItem.textContent = category;
+                
+                categoryItem.addEventListener('click', () => {
+                    searchInput.value = category;
+                    suggestionsContainer.innerHTML = '';
+                    // Redirect to category page
+                    alert(`You selected: ${category}`);
+                });
+                
+                suggestionsContainer.appendChild(categoryItem);
+            });
+        }
+        
+        // Show popular categories when search is focused
+        searchInput.addEventListener('focus', () => {
+            if (searchInput.value === '') {
+                displayPopularCategories();
+            }
+        });
+        
+        // Handle form submission (search)
+        searchInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    // Here you would typically redirect to search results page
+                    alert(`Searching for: ${searchTerm}`);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

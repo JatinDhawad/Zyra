@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Dress - ZYRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lora', serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-name {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        nav.head ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav.head ul li {
+            margin-left: 30px;
+        }
+
+        nav.head ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav.category {
+            background-color: white;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav.category ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav.category ul li {
+            margin: 0 40px;
+        }
+
+        nav.category ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .product-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .product-gallery {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .product-video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            opacity: 1;
+            border: 2px solid #333;
+        }
+
+        .product-info {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .product-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .color-options {
+            margin-bottom: 25px;
+        }
+
+        .color-options h3 {
+            margin-bottom: 15px;
+        }
+
+        .color-grid {
+            display: flex;
+            gap: 10px;
+        }
+
+        .color-box {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .color-box.selected {
+            border-color: #333;
+        }
+
+        .color-black {
+            background-color: #333;
+        }
+
+        .color-red {
+            background-color: #d32f2f;
+        }
+
+        .color-blue {
+            background-color: #1976d2;
+        }
+
+        .color-green {
+            background-color: #388e3c;
+        }
+
+        .size-options {
+            margin-bottom: 30px;
+        }
+
+        .size-options h3 {
+            margin-bottom: 15px;
+        }
+
+        .size-grid {
+            display: flex;
+            gap: 10px;
+        }
+
+        .size-box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .size-box:hover, .size-box.selected {
+            background-color: #333;
+            color: white;
+        }
+
+        .quantity {
+            margin-bottom: 30px;
+        }
+
+        .quantity h3 {
+            margin-bottom: 15px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #f1f1f1;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            margin: 0 10px;
+        }
+
+        .add-cart-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-cart-btn:hover {
+            background-color: #555;
+        }
+
+        .reviews-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .reviews-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .review {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .review:last-child {
+            border-bottom: none;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+        }
+
+        .review-date {
+            color: #888;
+        }
+
+        .review-rating {
+            color: #f5a623;
+            margin-bottom: 10px;
+        }
+
+        .review-content {
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .cart-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            display: none;
+            animation: fadeIn 0.3s, fadeOut 0.3s 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand-name">ZYRA</div>
+        <nav class="head">
+            <ul>
+                <li><img src="Search.png" alt="Search Icon"></li>
+                <li><a href="signin.html">Sign in</a></li>
+                <li><img src="empty_heart.png" alt="Favourite Icon"><a href="#">Favourite</a></li>
+                <li><img src="cart.png" alt="Cart Icon"><a href="#">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="category">
+        <ul>
+            <li> <a href="men.html">MEN</a> </li>
+            <li> <a href="women.html"> WOMEN</a> </li>
+            <li> <a href="kids.html"> KIDS </a> </li>
+        </ul>
+    </nav>
+
+    <div class="product-container">
+        <div class="product-gallery">
+            <video class="product-video" src="/api/placeholder/400/500" autoplay loop muted playsinline></video>
+            <div class="thumbnail-container">
+                <img class="thumbnail active" src="/api/placeholder/80/80" alt="Dress thumbnail 1">
+                <img class="thumbnail" src="/api/placeholder/80/80" alt="Dress thumbnail 2">
+                <img class="thumbnail" src="/api/placeholder/80/80" alt="Dress thumbnail 3">
+                <img class="thumbnail" src="/api/placeholder/80/80" alt="Dress thumbnail 4">
+            </div>
+        </div>
+        <div class="product-info">
+            <h1 class="product-title">Elegant Floral Dress</h1>
+            <p class="product-price">Rs. 1299</p>
+            <div class="product-description">
+                <p>Make a statement with our Elegant Floral Dress. This beautifully crafted dress features a flattering silhouette and premium quality fabric that drapes gracefully. Perfect for both casual outings and semi-formal events, this versatile dress will quickly become a favorite in your wardrobe.</p>
+                <p>Features:</p>
+                <ul>
+                    <li>Premium quality rayon fabric</li>
+                    <li>Elegant floral pattern</li>
+                    <li>Comfortable fit with slight stretch</li>
+                    <li>Side pockets for convenience</li>
+                    <li>Machine washable</li>
+                    <li>Available in multiple colors</li>
+                </ul>
+            </div>
+            <div class="color-options">
+                <h3>Select Color</h3>
+                <div class="color-grid">
+                    <div class="color-box color-black selected"></div>
+                    <div class="color-box color-red"></div>
+                    <div class="color-box color-blue"></div>
+                    <div class="color-box color-green"></div>
+                </div>
+            </div>
+            <div class="size-options">
+                <h3>Select Size</h3>
+                <div class="size-grid">
+                    <div class="size-box">XS</div>
+                    <div class="size-box">S</div>
+                    <div class="size-box">M</div>
+                    <div class="size-box">L</div>
+                    <div class="size-box">XL</div>
+                </div>
+            </div>
+            <div class="quantity">
+                <h3>Quantity</h3>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <input type="text" class="quantity-input" value="1">
+                    <button class="quantity-btn">+</button>
+                </div>
+            </div>
+            <button class="add-cart-btn">ADD TO CART</button>
+        </div>
+    </div>
+
+    <section class="reviews-section">
+        <h2 class="reviews-title">Customer Reviews</h2>
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Meera P.</span>
+                <span class="review-date">April 8, 2025</span>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-content">This dress exceeded my expectations! The fabric quality is excellent and the floral pattern is even prettier in person. I'm usually between sizes and went with the smaller size, which fits perfectly. Received many compliments when I wore it to a garden party.</p>
+        </div>
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Ritu S.</span>
+                <span class="review-date">March 31, 2025</span>
+            </div>
+            <div class="review-rating">★★★★☆</div>
+            <p class="review-content">Beautiful dress with great attention to detail. The pockets are a fantastic addition! The only reason I'm giving 4 stars instead of 5 is that the dress is slightly longer than it appears in the photos. I'm 5'4" and it hits below my knees.</p>
+        </div>
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Anjali T.</span>
+                <span class="review-date">March 20, 2025</span>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-content">Perfect dress for summer! The fabric is lightweight but not see-through, and the fit is just as described. I love that it's versatile enough to dress up or down depending on the occasion. Already ordered it in another color!</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ZYRA. All rights reserved.</p>
+    </footer>
+
+    <div id="cart-popup" class="cart-popup">Item added to cart!</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Thumbnail selection
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    // In a real implementation, this would change the main product image/video
+                });
+            });
+
+            // Color selection
+            const colorBoxes = document.querySelectorAll('.color-box');
+            colorBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    colorBoxes.forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            // Size selection
+            const sizeBoxes = document.querySelectorAll('.size-box');
+            sizeBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    sizeBoxes.forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            // Quantity control
+            const quantityInput = document.querySelector('.quantity-input');
+            const quantityBtns = document.querySelectorAll('.quantity-btn');
+            
+            quantityBtns[0].addEventListener('click', function() {
+                let value = parseInt(quantityInput.value);
+                if (value > 1) {
+                    quantityInput.value = value - 1;
+                }
+            });
+            
+            quantityBtns[1].addEventListener('click', function() {
+                let value = parseInt(quantityInput.value);
+                quantityInput.value = value + 1;
+            });
+
+            // Add to cart functionality
+            const addCartBtn = document.querySelector('.add-cart-btn');
+            const cartPopup = document.getElementById('cart-popup');
+            
+            addCartBtn.addEventListener('click', function() {
+                cartPopup.style.display = 'block';
+                
+                setTimeout(function() {
+                    cartPopup.style.display = 'none';
+                }, 2300);
+            });
+        });
+    </script>
+</body>
+
+</html>

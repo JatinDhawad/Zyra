@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYRA - Shopping Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lora', serif;
+        }
+
+        body {
+            background-color: rgb(226, 241, 248);
+        }
+
+        header {
+            background-color: white;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            font-size: 24px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            text-align: center;
+        }
+
+        nav.head ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav.head ul li {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav.head ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 19px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav.head ul li img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        }
+
+        nav.head ul li:hover a {
+            color: #0077b6;
+        }
+
+        nav.head ul li:hover img {
+            transform: scale(1.2);
+            filter: brightness(0.6);
+        }
+
+        nav.category {
+            background-color: #f5f5f5;
+            padding: 15px 0;
+        }
+
+        nav.category ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav.category ul li {
+            margin: 0 30px;
+        }
+
+        nav.category ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav.category ul li a:hover {
+            color: #555;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            letter-spacing: 1px;
+        }
+
+        .cart-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .cart-items {
+            flex: 3;
+        }
+
+        .cart-summary {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            height: fit-content;
+        }
+
+        .cart-item {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-image {
+            width: 120px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .item-price {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .quantity-input {
+            width: 40px;
+            height: 30px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+        }
+
+        .remove-item {
+            color: #888;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 14px;
+            padding: 5px 0;
+        }
+
+        .remove-item:hover {
+            color: #555;
+        }
+
+        .summary-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .total-row {
+            font-weight: 700;
+            font-size: 18px;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 25px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #333;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .empty-cart p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .continue-shopping:hover {
+            background-color: #333;
+        }
+
+        footer {
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .cart-container {
+                flex-direction: column;
+            }
+
+            header {
+                padding: 15px;
+            }
+
+            .brand-name {
+                font-size: 24px;
+            }
+
+            nav.head ul li {
+                margin-left: 15px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            .item-image {
+                width: 80px;
+                height: 100px;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand-name">ZYRA</div>
+        <nav class="head">
+            <ul>
+                <li><img src="Search.png" alt="Search Icon"></li>
+                <li><a href="signin.html">Sign in</a></li>
+                <li><img src="empty_heart.png" alt="Favourite Icon"><a href="#">Favourite</a></li>
+                <li><img src="cart.png" alt="Cart Icon"><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="category">
+        <ul>
+            <li><a href="men.html">MEN</a></li>
+            <li><a href="women.html">WOMEN</a></li>
+            <li><a href="kids.html">KIDS</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1 class="page-title">YOUR CART</h1>
+
+        <div class="cart-container" id="cart-with-items">
+            <div class="cart-items">
+                <!-- Cart items will be dynamically added here by JavaScript -->
+            </div>
+
+            <div class="cart-summary">
+                <h2 class="summary-title">ORDER SUMMARY</h2>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">Rs. 0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="shipping">Rs. 0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax</span>
+                    <span id="tax">Rs. 0</span>
+                </div>
+                <div class="summary-row total-row">
+                    <span>Total</span>
+                    <span id="total">Rs. 0</span>
+                </div>
+                <a href="checkout.html"> <button class="checkout-btn">PROCEED TO CHECKOUT</button></a>
+            </div>
+        </div>
+
+        <div class="empty-cart" id="empty-cart" style="display: none;">
+            <p>Your cart is empty.</p>
+            <a href="index.html" class="continue-shopping">CONTINUE SHOPPING</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ZYRA. All rights reserved.</p>
+    </footer>
+
+    <script src="cart.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Your Clothing Store</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .step-active {
+            background-color: #2563eb;
+            color: white;
+        }
+        
+        .step-inactive {
+            background-color: #e5e7eb;
+        }
+        
+        .line-active {
+            background-color: #2563eb;
+        }
+        
+        .line-inactive {
+            background-color: #e5e7eb;
+        }
+        
+        .payment-method {
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .payment-method.active {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        
+        .payment-icon {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container {
+                flex-direction: column;
+            }
+            
+            .checkout-form,
+            .order-summary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <h1 class="text-3xl font-bold mb-8 text-center">Checkout</h1>
+        
+        <!-- Checkout Steps -->
+        <div class="flex justify-center mb-8">
+            <div class="flex items-center">
+                <div id="step1-indicator" class="rounded-full h-10 w-10 flex items-center justify-center step-active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </div>
+                <div id="connection-line" class="h-1 w-20 line-inactive"></div>
+                <div id="step2-indicator" class="rounded-full h-10 w-10 flex items-center justify-center step-inactive">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8 checkout-container">
+            <!-- Left Side - Form -->
+            <div class="lg:w-2/3 bg-white p-6 rounded-lg shadow checkout-form">
+                <form id="checkout-form">
+                    <!-- Step 1: Shipping Information (Visible by default) -->
+                    <div id="shipping-step">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                            Shipping Information
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                <input type="text" name="firstName" class="w-full p-2 border border-gray-300 rounded" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <input type="text" name="lastName" class="w-full p-2 border border-gray-300 rounded" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" name="email" class="w-full p-2 border border-gray-300 rounded" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                            <input type="text" name="address" class="w-full p-2 border border-gray-300 rounded" required>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                                <input type="text" name="city" class="w-full p-2 border border-gray-300 rounded" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Zip Code</label>
+                                <input type="text" name="zipCode" class="w-full p-2 border border-gray-300 rounded" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                                <select name="country" class="w-full p-2 border border-gray-300 rounded" required>
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="AU">India</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Payment Information (Initially Hidden) -->
+                    <div id="payment-step" style="display: none;">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                            </svg>
+                            Payment Method
+                        </h2>
+                        <div class="mb-6">
+                            <div class="flex flex-wrap mb-4">
+                                <div class="payment-method active" data-method="credit">
+                                    <svg class="payment-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                                    </svg>
+                                    <span>Credit Card</span>
+                                </div>
+                                <div class="payment-method" data-method="paypal">
+                                    <svg class="payment-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.002 1.304-.948 2.155.19 6.043.223 8.221.223 1.175 0 1.591-.968 1.033-1.932-1.301-2.243-5.259-2.243-8.546-2.243-1.613 0-1.613 1.62-.71 1.62h5.37"></path>
+                                        <path d="M3.563 19.532l1.05-5.751c.109-.606.69-1.002 1.304-.948 2.155.19 6.043.223 8.22.223 1.175 0 1.592-.968 1.033-1.932-1.301-2.243-5.259-2.243-8.545-2.243-1.613 0-1.613 1.62-.71 1.62h3.37"></path>
+                                    </svg>
+                                    <span>PayPal</span>
+                                </div>
+                            </div>
+                            
+                            <div id="credit-card-form" class="border border-gray-200 rounded-lg p-4">
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                                    <input type="text" name="cardNumber" placeholder="1234 5678 9012 3456" class="w-full p-2 border border-gray-300 rounded" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Cardholder Name</label>
+                                    <input type="text" name="cardName" class="w-full p-2 border border-gray-300 rounded" required>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                                        <input type="text" name="expiry" placeholder="MM/YY" class="w-full p-2 border border-gray-300 rounded" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                                        <input type="text" name="cvv" placeholder="123" class="w-full p-2 border border-gray-300 rounded" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="paypal-form" class="border border-gray-200 rounded-lg p-4 text-center" style="display: none;">
+                                <p class="mb-4">You will be redirected to PayPal to complete your payment.</p>
+                                <div class="bg-gray-200 w-48 h-12 mx-auto flex items-center justify-center text-gray-800 font-bold">
+                                    PayPal
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button type="button" id="continue-button" class="bg-blue-600 text-white py-2 px-6 rounded-lg flex items-center justify-center w-full md:w-auto">
+                            Continue to Payment 
+                            <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                        <button type="button" id="complete-button" style="display: none;" class="bg-blue-600 text-white py-2 px-6 rounded-lg flex items-center justify-center w-full md:w-auto">
+                            Complete Purchase
+                            <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Right Side - Order Summary -->
+            <div class="lg:w-1/3 order-summary">
+                <div class="bg-white p-6 rounded-lg shadow mb-4">
+                    <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+                    <div id="cart-items" class="divide-y divide-gray-200">
+                        <!-- Cart items will be inserted here via JavaScript -->
+                    </div>
+                    <div class="border-t border-gray-200 pt-4 mt-2">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">Subtotal</span>
+                            <span id="subtotal">₹0.00</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">Shipping</span>
+                            <span id="shipping">₹4.99</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">Tax</span>
+                            <span id="tax">₹0.00</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-lg mt-4 pt-4 border-t border-gray-200">
+                            <span>Total</span>
+                            <span id="total">₹0.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Security -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-sm font-medium mb-2">Secure Checkout</h3>
+                    <p class="text-xs text-gray-500 mb-2">
+                        Your payment information is processed securely. We do not store credit card details.
+                    </p>
+                    <div class="flex space-x-2">
+                        <div class="bg-gray-200 w-10 h-6 rounded"></div>
+                        <div class="bg-gray-200 w-10 h-6 rounded"></div>
+                        <div class="bg-gray-200 w-10 h-6 rounded"></div>
+                        <div class="bg-gray-200 w-10 h-6 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Initialize checkout page
+    initializeCheckout();
+
+    // Event listeners for buttons
+    document.getElementById('continue-button').addEventListener('click', continueToPayment);
+    document.getElementById('complete-button').addEventListener('click', completeOrder);
+
+    // Event listeners for payment method selection
+    const paymentMethods = document.querySelectorAll('.payment-method');
+    paymentMethods.forEach(method => {
+        method.addEventListener('click', function() {
+            selectPaymentMethod(this.getAttribute('data-method'));
+        });
+    });
+});
+        
+        function initializeCheckout() {
+    // Retrieve cart data from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('zyraCart')) || [];
+
+    // Render cart items
+    renderCartItems(cartItems);
+
+    // Calculate and display totals
+    updateOrderSummary(cartItems);
+}
+        
+function renderCartItems() {
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const cart = JSON.parse(localStorage.getItem('zyraCart')) || [];
+
+    cartItemsContainer.innerHTML = ''; // Clear existing items
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+    }
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="item-image">
+            <div class="item-details">
+                <h3 class="item-name">${item.name}</h3>
+                <p class="item-price">₹${item.price}</p>
+                <p class="item-size">Size: ${item.size}</p>
+                <div class="quantity-controls">
+                    <button class="quantity-btn minus">-</button>
+                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" max="10">
+                    <button class="quantity-btn plus">+</button>
+                </div>
+                <button class="remove-item">Remove</button>
+            </div>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+    });
+}
+        
+function updateOrderSummary(items) {
+    const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const shipping = items.length > 0 ? 4.99 : 0; // Example: $4.99 shipping for non-empty cart
+    const tax = subtotal * 0.08; // Example: 8% tax
+    const total = subtotal + shipping + tax;
+
+    document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+    document.getElementById('shipping').textContent = `₹${shipping.toFixed(2)}`;
+    document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
+    document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+}
+        
+        function continueToPayment() {
+            // Validate shipping form
+            const shippingForm = document.getElementById('shipping-step');
+            const inputs = shippingForm.querySelectorAll('input, select');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (input.hasAttribute('required') && !input.value) {
+                    isValid = false;
+                    input.classList.add('border-red-500');
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Switch to payment step
+            document.getElementById('shipping-step').style.display = 'none';
+            document.getElementById('payment-step').style.display = 'block';
+            document.getElementById('continue-button').style.display = 'none';
+            document.getElementById('complete-button').style.display = 'flex';
+            
+            // Update step indicators
+            document.getElementById('step1-indicator').classList.remove('step-active');
+            document.getElementById('step1-indicator').classList.add('step-inactive');
+            document.getElementById('step2-indicator').classList.remove('step-inactive');
+            document.getElementById('step2-indicator').classList.add('step-active');
+            document.getElementById('connection-line').classList.remove('line-inactive');
+            document.getElementById('connection-line').classList.add('line-active');
+        }
+        
+        function selectPaymentMethod(method) {
+            // Reset all payment methods
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Activate selected method
+            document.querySelector(`.payment-method[data-method="${method}"]`).classList.add('active');
+            
+            // Show/hide appropriate form
+            if (method === 'credit') {
+                document.getElementById('credit-card-form').style.display = 'block';
+                document.getElementById('paypal-form').style.display = 'none';
+            } else if (method === 'paypal') {
+                document.getElementById('credit-card-form').style.display = 'none';
+                document.getElementById('paypal-form').style.display = 'block';
+            }
+        }
+        
+        function completeOrder() {
+            // Get active payment method
+            const activeMethod = document.querySelector('.payment-method.active').getAttribute('data-method');
+            
+            // Validate payment form
+            if (activeMethod === 'credit') {
+                const cardForm = document.getElementById('credit-card-form');
+                const inputs = cardForm.querySelectorAll('input');
+                let isValid = true;
+                
+                inputs.forEach(input => {
+                    if (input.hasAttribute('required') && !input.value) {
+                        isValid = false;
+                        input.classList.add('border-red-500');
+                    } else {
+                        input.classList.remove('border-red-500');
+                    }
+                });
+                
+                if (!isValid) {
+                    alert('Please fill in all required payment details.');
+                    return;
+                }
+            }
+            
+            // Here you would normally send the data to your server or payment processor
+            // For this example, we'll just show a success message
+            
+            // Collect form data
+            const formData = {};
+            const formElements = document.getElementById('checkout-form').elements;
+            for (let i = 0; i < formElements.length; i++) {
+                if (formElements[i].name) {
+                    formData[formElements[i].name] = formElements[i].value;
+                }
+            }
+            
+            // Add payment method
+            formData.paymentMethod = activeMethod;
+            
+            // In a real implementation, you would send this data to your server
+            console.log('Order data:', formData);
+            
+            // Show success message (in a real app, only after successful payment processing)
+            alert('Thank you for your order! Your payment has been processed successfully.');
+            
+            // Redirect to order confirmation page (in a real implementation)
+            // window.location.href = '/order-confirmation';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+[
+    {
+        "id": 1,
+        "name": "Oversized T-Shirt",
+        "price": 789,
+        "image": "1.png",
+        "description": "Elevate your casual wardrobe with our premium Oversized T-Shirt. Crafted from 100% organic cotton, this t-shirt offers both comfort and style.",
+        "features": [
+            "Premium organic cotton fabric",
+            "Relaxed, oversized fit",
+            "Reinforced stitching for durability",
+            "Pre-shrunk to minimize size changes after washing",
+            "Available in multiple colors"
+        ],
+        "sizes": ["S", "M", "L", "XL", "XXL"],
+        "reviews": [
+            {
+                "name": "Rahul M.",
+                "date": "April 10, 2025",
+                "rating": 5,
+                "comment": "Absolutely love this t-shirt! The quality is amazing, and it fits perfectly."
+            },
+            {
+                "name": "Priya S.",
+                "date": "April 8, 2025",
+                "rating": 4,
+                "comment": "Great t-shirt overall. The material feels premium, but I wish there were more color options."
+            }
+        ]
+    },
+
+    {
+        "id": 2,
+        "name": "Premium Oversized Tee",
+        "price": 1799,
+        "image": "8.png",
+        "description": "Stay warm and stylish with our premium tshirt. Made from high-quality fleece fabric, this tshirt is perfect for chilly days.",
+        "features": [
+            "Soft fleece fabric",
+            "Adjustable drawstring hood",
+            "Kangaroo pocket",
+            "Available in multiple colors"
+        ],
+        "sizes": ["S", "M", "L", "XL"],
+        "reviews": [
+            {
+                "name": "Rahul M.",
+                "date": "April 10, 2025",
+                "rating": 5,
+                "comment": "Absolutely love this t-shirt! The quality is amazing, and it fits perfectly."
+            },
+            {
+                "name": "Priya S.",
+                "date": "April 8, 2025",
+                "rating": 4,
+                "comment": "Great t-shirt overall. The material feels premium, but I wish there were more color options."
+            }
+        ]
+    }
+
+,
+{
+    "id": 3,
+    "name": "Urban Graphic T-shirt",
+    "price": 2999,
+    "image": "9.png",
+    "description": "Grace flows with every step — embrace timeless elegance in our Urban Graphic T-shirt.",
+    "features": [
+        "Soft fleece fabric",
+        "Adjustable drawstring hood",
+        "Available in multiple colors"
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "reviews": [
+        {
+            "name": "Rahul M.",
+            "date": "April 10, 2025",
+            "rating": 5,
+            "comment": "Absolutely love this t-shirt! The quality is amazing, and it fits perfectly."
+        },
+        {
+            "name": "Priya S.",
+            "date": "April 8, 2025",
+            "rating": 4,
+            "comment": "Great t-shirt overall. The material feels premium, but I wish there were more color options."
+        }
+    ]
+}
+,
+    {
+        "id": 5,
+        "name": "Long Sleeve T-shirt",
+        "price": 2499,
+        "image": "10.png",
+        "description": "Make every moment memorable with the bold charm of our Long Sleeve T-shirt.",
+        "features": [
+            "100% cotton ",
+            "Sexy cuts",
+            "Gloves perfectly",
+            "Available in multiple colors"
+        ],
+        "sizes": ["S", "M", "L", "XL"],
+        "reviews": [
+            {
+                "name": "Rahul M.",
+                "date": "April 10, 2025",
+                "rating": 5,
+                "comment": "Absolutely love this t-shirt! The quality is amazing, and it fits perfectly."
+            },
+            {
+                "name": "Priya S.",
+                "date": "April 8, 2025",
+                "rating": 4,
+                "comment": "Great t-shirt overall. The material feels premium, but I wish there were more color options."
+            }
+        ]
+    }
+,
+{
+    "id": 6,
+    "name": "Hoodie",
+    "price": 2999,
+    "image": "2.png",
+    "description": "Confident curves, sleek silhouette — redefine allure with our Hoodie.",
+    "features": [
+        "100% cotton ",
+        "Sexy cuts",
+        "Gloves perfectly",
+        "Available in multiple colors"
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "reviews": [
+        {
+            "name": "Rahul M.",
+            "date": "April 10, 2025",
+            "rating": 5,
+            "comment": "Absolutely love this t-shirt! The quality is amazing, and it fits perfectly."
+        },
+        {
+            "name": "Priya S.",
+            "date": "April 8, 2025",
+            "rating": 4,
+            "comment": "Great t-shirt overall. The material feels premium, but I wish there were more color options."
+        }
+    ]
+}
+
+,
+{
+    "id": 7,
+    "name": "Dress",
+    "price": 1899,
+    "image": "5.png",
+    "description": "Soft fabrics, graceful drapes — elevate sophistication with our dress.",
+    "features": [
+        "Lightweight, flowy material",
+        "Elegant necklines",
+        "Perfect for office or outings",
+        "Available in multiple pastel and bold colors"
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "reviews": [
+        {
+            "name": "Rahul M.",
+            "date": "April 10, 2025",
+            "rating": 5,
+            "comment": "Absolutely love this t-shirt! The quality is amazing, and it fits perfectly."
+        },
+        {
+            "name": "Priya S.",
+            "date": "April 8, 2025",
+            "rating": 4,
+            "comment": "Great t-shirt overall. The material feels premium, but I wish there were more color options."
+        }
+    ]
+},
+{
+    "id": 8,
+    "name": "Formal Suit",
+    "price": 1599,
+    "image": "4.png",
+    "description": "Effortlessly polished — redefine your everyday style with our timeless button-downs.",
+    "features": [
+        "100% breathable cotton",
+        "Tailored fit for a sleek silhouette",
+        "Crisp collars and cuffed sleeves",
+        "Available in classic white and versatile patterns"
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "reviews": [
+        {
+            "name": "Rahul M.",
+            "date": "April 10, 2025",
+            "rating": 5,
+            "comment": "Absolutely love this t-shirt! The quality is amazing, and it fits perfectly."
+        },
+        {
+            "name": "Priya S.",
+            "date": "April 8, 2025",
+            "rating": 4,
+            "comment": "Great t-shirt overall. The material feels premium, but I wish there were more color options."
+        }
+    ]
+},
+{
+    "id": 9,
+    "name": "Slim Fit Oxford Shirt",
+    "price": 999,
+    "image": "11.png",
+    "description": "Bold and breezy, our crop tops are perfect for relaxed yet playful looks.",
+    "features": [
+        "Soft, stretchable fabric",
+        "Trendy cropped design",
+        "Breathable for everyday comfort",
+        "Available in vibrant and neutral shades"
+    ],
+    "sizes": ["XS", "S", "M", "L"]
+},
+{
+    "id": 10,
+    "name": "Wrap Top",
+    "price": 1799,
+    "image": "10.png",
+    "description": "Flattering wraps for every figure — where elegance meets comfort in perfect harmony.",
+    "features": [
+        "Adjustable wrap design",
+        "Soft fabric blend for comfort",
+        "Flattering fit for all body types",
+        "Available in floral and solid prints"
+    ],
+    "sizes": ["S", "M", "L", "XL"]
+},
+{
+    "id": 16,
+    "name": "Statement Sleeve Top",
+    "price": 1999,
+    "image": "images/statement-sleeve-top.jpg",
+    "description": "Dramatic sleeves, undeniable charm — make every outfit a statement.",
+    "features": [
+        "Bold, voluminous sleeves",
+        "Breathable and soft fabric",
+        "Unique designs for standout looks",
+        "Available in vibrant patterns and solids"
+    ],
+    "sizes": ["S", "M", "L", "XL"]
+},
+
+{
+    "id": 13,
+    "name": "Urban Street Hoodie",
+    "price": 2499,
+    "image": "13.png",
+    "description": "Flatter your figure with our High-Waisted Jeans — a wardrobe essential for timeless style.",
+    "features": [
+        "Premium stretch denim",
+        "High-rise waistline",
+        "Available in multiple washes",
+        "Durable and comfortable for all-day wear"
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL"]
+},
+{
+    "id": 12,
+    "name": "Wide-Leg Trousers",
+    "price": 2799,
+    "image": "12.png",
+    "description": "Effortless flow and sharp tailoring — elevate your style with our Wide-Leg Trousers.",
+    "features": [
+        "Soft, breathable fabric",
+        "Relaxed wide-leg fit",
+        "Elegant pleated design",
+        "Perfect for both work and casual days"
+    ],
+    "sizes": ["S", "M", "L", "XL"]
+},
+{
+    "id": 45,
+    "name": "Denim Skirt",
+    "price": 1999,
+    "image": "images/denim-skirt.jpg",
+    "description": "Classic denim with a feminine twist — embrace casual chic with our Denim Skirt.",
+    "features": [
+        "High-quality denim",
+        "Front slit for added style",
+        "Button-up front closure",
+        "Available in classic blue and black"
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL"]
+},
+{
+    "id": 14,
+    "name": "Tailored Shorts",
+    "price": 1799,
+    "image": "images/tailored-shorts.jpg",
+    "description": "Stay cool and stylish with our sleek Tailored Shorts — perfect for sunny days.",
+    "features": [
+        "Structured tailoring",
+        "Breathable material",
+        "Mid-rise waist",
+        "Available in neutral shades"
+    ],
+    "sizes": ["XS", "S", "M", "L"]
+},
+{
+    "id": 15,
+    "name": "Pleated Midi Skirt",
+    "price": 2299,
+    "image": "images/pleated-midi-skirt.jpg",
+    "description": "Flowing pleats meet elegant style — twirl into grace with our Midi Skirt.",
+    "features": [
+        "Lightweight fabric for graceful movement",
+        "Elastic waistband for comfort",
+        "Available in prints and solid colors",
+        "Perfect for casual and dressy looks"
+    ],
+    "sizes": ["S", "M", "L", "XL"]
+}
+,
+{
+    "id": 16,
+    "name": "Printed Co-ord Set",
+    "price": 3299,
+    "image": "images/printed-coord.jpg",
+    "description": "Bold prints and effortless style — our Printed Co-ord Set makes dressing a breeze.",
+    "features": [
+        "Matching top and bottom",
+        "Eye-catching prints",
+        "Soft, breathable fabric",
+        "Perfect for casual outings and vacations"
+    ],
+    "sizes": ["S", "M", "L", "XL"]
+},
+{
+    "id": 17,
+    "name": "Lounge Set",
+    "price": 2999,
+    "image": "images/lounge-set.jpg",
+    "description": "Comfort never looked this good — relax in style with our Lounge Set.",
+    "features": [
+        "Ultra-soft fabric",
+        "Relaxed fit",
+        "Coordinated top and bottom",
+        "Available in soothing neutral tones"
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL"]
+},
+{
+    "id": 18,
+    "name": "Blazer & Trouser Set",
+    "price": 4599,
+    "image": "images/blazer-trouser-set.jpg",
+    "description": "Command attention in our Blazer & Trouser Set — power dressing at its finest.",
+    "features": [
+        "Tailored blazer and matching trousers",
+        "Polished finish for a sharp look",
+        "Perfect for meetings and events",
+        "Available in bold and neutral shades"
+    ],
+    "sizes": ["S", "M", "L", "XL"]
+},
+{
+    "id": 19,
+    "name": "Knit Co-ord Set",
+    "price": 3499,
+    "image": "images/knit-coord.jpg",
+    "description": "Snuggle up in style — our Knit Co-ord Set is cozy-chic perfected.",
+    "features": [
+        "Soft knit fabric",
+        "Relaxed yet stylish silhouette",
+        "Warm and breathable",
+        "Perfect for cool-weather lounging"
+    ],
+    "sizes": ["S", "M", "L", "XL"]
+},
+{
+    "id": 20,
+    "name": "Summer Co-ord Set",
+    "price": 2899,
+    "image": "images/summer-coord.jpg",
+    "description": "Sunny days call for effortless fashion — shine in our Summer Co-ord Set.",
+    "features": [
+        "Lightweight and airy fabric",
+        "Playful patterns",
+        "Coordinated crop top and shorts",
+        "Perfect for beach days and picnics"
+    ],
+    "sizes": ["XS", "S", "M", "L"]
+}
+
+]

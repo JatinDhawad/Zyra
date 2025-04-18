@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Basic Crew Neck T-shirt",
+        "price": 599,
+        "image": "1.png",
+        "category": "tshirts",
+        "isNew": true,
+        "isOnSale": false
+    },
+    {
+        "id": 2,
+        "name": "Premium Oversized Tee",
+        "price": 899,
+        "image": "8.png",
+        "category": "tshirts",
+        "isNew": false,
+        "isOnSale": true
+    },
+    {
+        "id": 3,
+        "name": "Urban Graphic T-shirt",
+        "price": 649,
+        "image": "9.png",
+        "category": "tshirts",
+        "isNew": false,
+        "isOnSale": true
+    },
+    {
+        "id": 4,
+        "name": "Slim Fit Henley T-shirt",
+        "price": 799,
+        "image": "images/slim-fit-henley.jpg",
+        "category": "tshirs",
+        "isNew": false,
+        "isOnSale": false
+    },
+    {
+        "id": 5,
+        "name": "Long Sleeve T-shirt",
+        "price": 999,
+        "image": "10.png",
+        "category": "tshirts",
+        "isNew": true,
+        "isOnSale": false
+    },
+    {
+        "id": 6,
+        "name": "Striped Polo T-shirt",
+        "price": 1199,
+        "image": "images/striped-polo.jpg",
+        "category": "men",
+        "isNew": false,
+        "isOnSale": false
+    }
+]
